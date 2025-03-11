@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detect if a URL is safe or a phishing site.">
+    <meta name="keywords" content="phishing URL, cyber security, machine learning">
+    <title>Phishing URL Detection</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="content-box">
+            <h1 class="title">Phishing URL Detection</h1>
+            <p class="subtitle">Ensure your online safety by detecting malicious URLs.</p>
+            <form action="/" method="post" class="form">
+                <input type="text" name="url" id="url" class="form__input" placeholder="Enter URL here..." required>
+                <button type="submit" class="btn-submit">Check URL</button>
+            </form>
+            <div id="result" class="result-box">
+                <p id="prediction" class="result-text"></p>
+                <button id="button1" class="btn-safe" style="display: none;" onclick="window.open('{{url}}')">Proceed Safely</button>
+                <button id="button2" class="btn-unsafe" style="display: none;" onclick="window.open('{{url}}')">Proceed with Caution</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        let x = '{{xx}}';  // Replace with actual value from backend
+        let num = x * 100;
+        if (0 <= x && x < 0.50) {
+            num = 100 - num;
+        }
+        let txtx = num.toString();
+        if (x <= 1 && x >= 0.50) {
+            var label = "Website is " + txtx + "% safe to use.";
+            document.getElementById("prediction").innerHTML = label;
+            document.getElementById("button1").style.display = "block";
+        } else if (0 <= x && x < 0.50) {
+            var label = "Website is " + txtx + "% unsafe to use.";
+            document.getElementById("prediction").innerHTML = label;
+            document.getElementById("button2").style.display = "block";
+        }
+    </script>
+</body>
+</html>
